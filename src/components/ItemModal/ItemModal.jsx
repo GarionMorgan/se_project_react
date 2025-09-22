@@ -5,7 +5,11 @@ function ItemModal({ activeModal, onClose, card }) {
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
         <button className="modal__close" type="button" onClick={onClose}>
-          CLOSE
+          <img
+            src="../../src/assets/X_close_white.svg"
+            alt="X close button white"
+            className="modal__close-btn"
+          />
         </button>
         <img src={card.link} alt="" className="modal__image" />
         <div className="modal__footer">
