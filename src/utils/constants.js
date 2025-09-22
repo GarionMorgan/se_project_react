@@ -1,3 +1,76 @@
+const weatherOptions = [
+  {
+    day: true,
+    condition: "clear",
+    url: new URL("../assets/day/clear_day.svg", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "cloudy",
+    url: new URL("../assets/day/cloudy_day.svg", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "fog",
+    url: new URL("../assets/day/fog_day.svg", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "rain",
+    url: new URL("../assets/day/rain_day.svg", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "snow",
+    url: new URL("../assets/day/snow_day.svg", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "storm",
+    url: new URL("../assets/day/storm_day.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "clear",
+    url: new URL("../assets/night/clear_night.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "cloudy",
+    url: new URL("../assets/night/cloudy_night.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "fog",
+    url: new URL("../assets/night/fog_night.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "rain",
+    url: new URL("../assets/night/rain_night.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "snow",
+    url: new URL("../assets/night/snow_night.svg", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "storm",
+    url: new URL("../assets/night/storm_night.svg", import.meta.url).href,
+  },
+];
+
+//default weather options
+const defaultWeatherOptions = {
+  day: {
+    url: new URL("../assets/day/default_day.svg", import.meta.url).href,
+  },
+  night: {
+    url: new URL("../assets/night/default_night.svg", import.meta.url).href,
+  },
+};
+
 // Contains default clothing items
 const defaultClothingItems = [
   {
@@ -105,4 +178,4 @@ export const coordinates = {
 
 export const APIkey = "8a7d88de552676a3d96610bd8eb51982";
 
-export { defaultClothingItems };
+export { defaultClothingItems, weatherOptions, defaultWeatherOptions };

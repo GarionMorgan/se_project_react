@@ -2,6 +2,7 @@
   width: 323px;
   position: relative;
   display: flex;
+  justify-content: center;
 }
 
 .card__name {
