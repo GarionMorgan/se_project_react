@@ -10,3 +10,10 @@
   max-width: 1440px;
   max-height: 822px;
 }
+
+@media screen and (max-width: 675px) {
+  .page__content {
+    max-width: 375px;
+    min-width: 200px;
+  }
+}

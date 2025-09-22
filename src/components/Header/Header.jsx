@@ -1,6 +1,7 @@
 import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.svg";
+import burgerMenu from "../../assets/hamburger_btn.svg";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -10,7 +11,17 @@ function Header({ handleAddClick, weatherData }) {
 
   return (
     <header className="header">
-      <img className="header__logo" src={logo} alt="What To Wear Logo" />
+      <div className="header__main">
+        <img className="header__logo" src={logo} alt="What To Wear Logo" />
+        <button className="header__hamburger-btn">
+          <img
+            src={burgerMenu}
+            alt="Hamburger Menu Icon"
+            className="header__hamburger_image"
+          />
+        </button>
+      </div>
+
       <p className="header__date-and-location">
         {currentDate}, {weatherData.city}
       </p>

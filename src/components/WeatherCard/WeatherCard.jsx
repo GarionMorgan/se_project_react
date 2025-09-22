@@ -1,4 +1,3 @@
-import sunny from "../../assets/sunny.svg";
 import "./WeatherCard.css";
 import { weatherOptions, defaultWeatherOptions } from "../../utils/constants";
 

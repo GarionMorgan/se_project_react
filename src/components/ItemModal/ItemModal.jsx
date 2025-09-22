@@ -1,4 +1,5 @@
 import "./ItemModal.css";
+import CloseBtn from "../../assets/X_close_white.svg";
 
 function ItemModal({ activeModal, onClose, card }) {
   return (
@@ -6,7 +7,7 @@ function ItemModal({ activeModal, onClose, card }) {
       <div className="modal__content modal__content_type_image">
         <button className="modal__close" type="button" onClick={onClose}>
           <img
-            src="../../src/assets/X_close_white.svg"
+            src={CloseBtn}
             alt="X close button white"
             className="modal__close-btn"
           />

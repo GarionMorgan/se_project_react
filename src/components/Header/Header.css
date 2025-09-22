@@ -42,3 +42,37 @@
   font-size: 20px;
   position: relative;
 }
+
+.header__hamburger-btn {
+  display: none;
+}
+
+@media screen and (max-width: 675px) {
+  .header {
+    justify-content: space-between;
+  }
+
+  .header__main {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header__logo {
+    width: 89px;
+    height: 40px;
+  }
+
+  .header__add-clothes-btn {
+    display: none;
+  }
+  .header__username {
+    display: none;
+  }
+  .header__avatar {
+    display: none;
+  }
+  .header__hamburger-btn {
+    display: flex;
+    position: relative;
+  }
+}
