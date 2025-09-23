@@ -1,12 +1,27 @@
-# React + Vite
+-Project Name-
+What To Wear Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+-Description-
 
-Currently, two official plugins are available:
+What To Wear Weather is a user-friendly web app that helps people decide what to wear based on real-time weather data. It fetches current conditions using a weather API and translates temperature, precipitation, and wind into clear clothing recommendations. Built with HTML, CSS, and JavaScript, the app emphasizes intuitive design and practical utility—ideal for users who want quick, actionable guidance before heading out the door.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-Technologies-
 
-Deployment
+- Frontend Framework: React
+- Language: JavaScript
+- Build Tool: Vite (for fast bundling and hot module replacement)
+- Markup & Styling: HTML and CSS (with modular or scoped styles)
+- Weather Data Integration: OpenWeatherMap API (or similar)
+- State Management: React hooks (useState, useEffect)
+- Deployment: GitHub Pages via gh-pages workflow
+- Version Control: Git + GitHub
+- Responsive Design: CSS media queries
+
+-Screen Shots-
+![Home Screen](image.png)
+![Add a new garmet](image-1.png)
+![Preview a selected garmet](image-2.png)
+
+-Deployment-
 
 This webpage is deployed to Github Pages: https://garionmorgan.github.io/se_project_react/

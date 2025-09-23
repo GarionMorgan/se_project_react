@@ -24,10 +24,10 @@ const isDay = ({ sunrise, sunset }, now) => {
   return sunrise * 1000 < now && now < sunset * 1000;
 };
 
-const getWeatherType = (tempature) => {
-  if (tempature > 86) {
+const getWeatherType = (temperature) => {
+  if (temperature > 86) {
     return "hot";
-  } else if (tempature >= 66 && tempature < 86) {
+  } else if (temperature >= 66 && temperature < 86) {
     return "warm";
   } else {
     return "cold";
