@@ -16,6 +16,7 @@
 .modal__close-btn {
   width: 16px;
   height: 16px;
+  cursor: pointer;
 }
 
 .modal__caption {

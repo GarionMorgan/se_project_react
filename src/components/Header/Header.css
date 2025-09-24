@@ -11,6 +11,7 @@
   border: none;
   font-size: 20px;
   line-height: 24px;
+  cursor: pointer;
 }
 
 .header__date-and-location {

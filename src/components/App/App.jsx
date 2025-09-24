@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { act, useEffect, useState } from "react";
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
@@ -31,6 +31,27 @@ function App() {
   const closeActiveModal = () => {
     setActiveModal("");
   };
+
+  useEffect(() => {
+    if (!activeModal) {
+      //exits if no modal is open
+      return;
+    }
+    //prevents unnecessary event listeners when not needed
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    //adding event listener with modal is active
+    document.addEventListener("keydown", handleEscClose);
+
+    //clean up the listener with modal is closed or component demounts
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]); //re-runs effect when activeModal changes
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
