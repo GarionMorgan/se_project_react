@@ -49,12 +49,27 @@
 
 @media screen and (max-width: 675px) {
   .header {
-    justify-content: space-between;
+    flex-direction: column;
   }
 
   .header__main {
     display: flex;
+    width: 100%;
+    align-items: center;
     justify-content: space-between;
+  }
+
+  .header__hamburger-btn {
+    display: flex;
+    position: relative;
+    border: none;
+    background-color: transparent;
+  }
+
+  .header__date-and-location {
+    margin: auto;
+    margin-left: 0;
+    margin-top: 32px;
   }
 
   .header__logo {
@@ -70,9 +85,5 @@
   }
   .header__avatar {
     display: none;
-  }
-  .header__hamburger-btn {
-    display: flex;
-    position: relative;
   }
 }
