@@ -6,7 +6,7 @@ const weatherOptions = [
   },
   {
     day: true,
-    condition: "cloudy",
+    condition: "clouds",
     url: new URL("../assets/day/cloudy_day.svg", import.meta.url).href,
   },
   {
@@ -36,7 +36,7 @@ const weatherOptions = [
   },
   {
     day: false,
-    condition: "cloudy",
+    condition: "clouds",
     url: new URL("../assets/night/cloudy_night.svg", import.meta.url).href,
   },
   {

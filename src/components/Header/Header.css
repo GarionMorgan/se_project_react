@@ -5,13 +5,22 @@
 }
 
 .header__add-clothes-btn {
-  margin: 0 20px 0 auto;
   position: relative;
   top: 4px;
   border: none;
   font-size: 20px;
   line-height: 24px;
   cursor: pointer;
+}
+
+.header__right-container {
+  display: flex;
+  margin: 0 20px 0 auto;
+  gap: 12px;
+}
+
+.header__toggle-switch {
+  top: 5px;
 }
 
 .header__date-and-location {

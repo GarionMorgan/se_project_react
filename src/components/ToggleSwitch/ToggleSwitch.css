@@ -1,11 +1,16 @@
 .toggle-switch {
   width: 56px;
   height: 28px;
-  border: 2px solid #000;
+  border: 1px solid #000;
   cursor: pointer;
   overflow: hidden;
   border-radius: 20px;
   position: relative;
+  top: 5px;
+}
+
+.toggle-switch:hover {
+  border: 2px solid #000;
 }
 
 .toggle-switch__checkbox {
@@ -44,4 +49,9 @@
 
 .toggle-switch__checkbox:checked ~ .toggle-switch__circle {
   left: 28px;
+}
+
+.toggle-switch__text_color_white {
+  color: #fff;
+  transition: all 1s;
 }
