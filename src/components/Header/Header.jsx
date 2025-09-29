@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.svg";
+import default_avatar from "../../assets/default_avatar.svg";
 import burgerMenu from "../../assets/hamburger_btn.svg";
 import MenuModal from "../MenuModal/MenuModal";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
@@ -17,10 +19,15 @@ function Header({
     day: "numeric",
   });
 
+  const username = "Terrence Tegegne";
+
   return (
     <header className="header">
       <div className="header__main">
-        <img className="header__logo" src={logo} alt="What To Wear Logo" />
+        <Link to="/se_project_react">
+          <img className="header__logo" src={logo} alt="What To Wear Logo" />
+        </Link>
+
         <button className="header__hamburger-btn" onClick={handleMenuClick}>
           <img
             src={burgerMenu}
@@ -43,10 +50,22 @@ function Header({
         >
           + Add clothes
         </button>
-        <div className="header__user-container">
-          <p className="header__username">Terrence Tegegne</p>
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
-        </div>
+        <Link to="/se_project_react/profile" className="header__profile-link">
+          <div className="header__user-container">
+            <p className="header__username">{username}</p>
+            {avatar ? (
+              <img
+                className="header__profile"
+                src={avatar || default_avatar}
+                alt="User Avatar"
+              />
+            ) : (
+              <span.header__avatar.header__avatar_none>
+                {username.charAt(0).toUpperCase() || ""}
+              </span.header__avatar.header__avatar_none>
+            )}{" "}
+          </div>
+        </Link>
       </div>
 
       {activeModal ? (

@@ -57,6 +57,11 @@
   display: none;
 }
 
+.header__profile-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 @media screen and (max-width: 675px) {
   .header {
     flex-direction: column;
