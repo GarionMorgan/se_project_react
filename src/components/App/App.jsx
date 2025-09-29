@@ -32,7 +32,7 @@ function App() {
     setcurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
-  const handleCardClick = (card) => {
+  const onCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
   };
@@ -114,13 +114,16 @@ function App() {
               element={
                 <Main
                   weatherData={weatherData}
-                  handleCardClick={handleCardClick}
+                  onCardClick={onCardClick}
                   clothingItems={clothingItems}
                   onAddBtnClick={setActiveModal}
                 />
               }
             />
-            <Route path="/se_project_react/profile" element={<Profile />} />
+            <Route
+              path="/se_project_react/profile"
+              element={<Profile onCardClick={onCardClick} />}
+            />
           </Routes>
 
           <AddItemModal
