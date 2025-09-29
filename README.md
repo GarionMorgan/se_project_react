@@ -18,9 +18,9 @@ What To Wear Weather is a user-friendly web app that helps people decide what to
 - Responsive Design: CSS media queries
 
 -Screen Shots-
-![Home Screen](image.png)
-![Add a new garmet](image-1.png)
-![Preview a selected garmet](image-2.png)
+![Home Screen](../se_project_react/src/assets/image.png)
+![Add a new garmet](../se_project_react/src/assets/image-1.png)
+![Preview a selected garmet](../se_project_react/src/assets/image-2.png)
 
 -Deployment-
 
