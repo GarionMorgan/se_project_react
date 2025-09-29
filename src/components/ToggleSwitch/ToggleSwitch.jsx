@@ -8,7 +8,7 @@ export default function ToggleSwitch() {
   );
 
   return (
-    <label htmlFor="" className="toggle-switch">
+    <label htmlFor="toggle-switch__checkbox" className="toggle-switch">
       <input
         onChange={handleToggleSwitchChange}
         type="checkbox"
