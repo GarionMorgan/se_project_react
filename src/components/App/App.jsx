@@ -10,9 +10,9 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import { defaultClothingItems } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import MenuModal from "../MenuModal/MenuModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -49,16 +49,26 @@ function App() {
     setActiveModal("");
   };
 
+  const handleDeleteBtnClick = () => {
+    setActiveModal("delete-item");
+  };
+
   const onAddItem = (data) => {
-    // console.log(data._id);
-    // const newCardData = {
-    //   _id: data._id,
-    //   name: data.name,
-    //   imageUrl: data.imageUrl,
-    //   weather: data.weather,
-    // };
     setClothingItems([data, ...clothingItems]);
     closeActiveModal();
+  };
+
+  const onDeleteItem = (data) => {
+    deleteItem(data._id)
+      .then(() => {
+        setClothingItems((state) =>
+          state.filter((item) => {
+            return item._id !== data._id;
+          })
+        );
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -91,9 +101,21 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        console.log(data);
+        // setClothingItems([data, ...clothingItems]);
+        setClothingItems(data);
+      })
+      .catch(console.error);
+  }, []);
+
   // useEffect(() => {
   //   setClothingItems(defaultClothingItems);
   // });
+
+  console.log("clothingItems:", clothingItems);
 
   return (
     <CurrentTemperatureUnitContext.Provider
@@ -101,16 +123,10 @@ function App() {
     >
       <div className="page">
         <div className="page__content">
-          <Header
-            handleAddClick={handleAddClick}
-            weatherData={weatherData}
-            handleMenuClick={handleMenuClick}
-            isOpen={activeModal === "user"}
-            onClose={closeActiveModal}
-          />
+          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
           <Routes>
             <Route
-              path="/se_project_react"
+              path="/"
               element={
                 <Main
                   weatherData={weatherData}
@@ -121,8 +137,14 @@ function App() {
               }
             />
             <Route
-              path="/se_project_react/profile"
-              element={<Profile onCardClick={onCardClick} />}
+              path="/profile"
+              element={
+                <Profile
+                  onCardClick={onCardClick}
+                  clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
+                />
+              }
             />
           </Routes>
 

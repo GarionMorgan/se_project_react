@@ -18,10 +18,23 @@
 
 .menuModal__content {
   background-color: #fff;
-  position: relative;
+  position: absolute;
   padding: 28px 28px 36px;
-  max-width: 496px;
   box-sizing: border-box;
-  width: 100%;
   border-radius: 20px;
+  height: 208px;
+  width: 67%;
+  top: 1%;
+}
+
+.menuModal__close-btn {
+  position: relative;
+}
+
+.menuModal__elements {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }

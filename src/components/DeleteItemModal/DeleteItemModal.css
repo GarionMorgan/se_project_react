@@ -1,0 +1,36 @@
+.deleteItemModal {
+  background-color: #fff;
+  position: relative;
+  padding: 28px 28px 36px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  width: 60%;
+  top: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deleteItemModal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.deleteItemModal__title {
+  margin: 24px 0 0;
+}
+
+.deleteItemModal__button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 24px;
+  margin: 6px 0 24px;
+}
+
+.deleteItemModal__button_type_confirm {
+  color: #ff0000;
+}

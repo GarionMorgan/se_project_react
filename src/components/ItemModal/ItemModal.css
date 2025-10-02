@@ -1,5 +1,4 @@
 .modal__content_type_image {
-  padding: 0;
   max-width: 498px;
   max-height: 610px;
 }
@@ -10,7 +9,10 @@
 }
 
 .modal__footer {
-  margin: 20px 0 32px 32px;
+  margin: 20px 0 0 32px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
 }
 
 .modal__close-btn {
@@ -21,8 +23,18 @@
 
 .modal__caption {
   font-size: 20px;
+  margin: 0;
 }
 
 .modal__weather {
+  font-size: 20px;
+}
+
+.modal__delete-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #ff0000;
+  margin-right: 10px;
   font-size: 20px;
 }

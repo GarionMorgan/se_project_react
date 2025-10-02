@@ -101,4 +101,7 @@
   .header__avatar {
     display: none;
   }
+  .header__toggle-switch {
+    display: none;
+  }
 }

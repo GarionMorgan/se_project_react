@@ -2,15 +2,20 @@ import "./ClothesSection.css";
 import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 
-function ClothesSection({ onCardClick }) {
+function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
   return (
     <div className="clothes-section">
-      <div>
+      <div className="clothes-section__header">
         <p>Your items</p>
-        <button>+ Add New</button>
+        <button
+          className="clothes-section__header-btn"
+          onClick={handleAddClick}
+        >
+          + Add New
+        </button>
       </div>
       <ul className="clothes-section__items">
-        {defaultClothingItems.map((item) => {
+        {clothingItems.map((item) => {
           return (
             <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
           );

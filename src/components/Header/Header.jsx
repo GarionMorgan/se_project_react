@@ -1,19 +1,20 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.svg";
-import default_avatar from "../../assets/default_avatar.svg";
+import defaultAvatar from "../../assets/defaultAvatar.svg";
 import burgerMenu from "../../assets/hamburger_btn.svg";
 import MenuModal from "../MenuModal/MenuModal";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-function Header({
-  handleAddClick,
-  weatherData,
-  handleMenuClick,
-  activeModal,
-  onClose,
-}) {
+function Header({ handleAddClick, weatherData }) {
+  const [isBurgerMenuOpened, setBurgerMenuOpened] = useState(false);
+
+  const handleBurgerMenuClick = () => {
+    setBurgerMenuOpened((value) => !value);
+  };
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -24,11 +25,14 @@ function Header({
   return (
     <header className="header">
       <div className="header__main">
-        <Link to="/se_project_react">
+        <Link to="/">
           <img className="header__logo" src={logo} alt="What To Wear Logo" />
         </Link>
 
-        <button className="header__hamburger-btn" onClick={handleMenuClick}>
+        <button
+          className="header__hamburger-btn"
+          onClick={handleBurgerMenuClick}
+        >
           <img
             src={burgerMenu}
             alt="Hamburger Menu Icon"
@@ -50,13 +54,13 @@ function Header({
         >
           + Add clothes
         </button>
-        <Link to="/se_project_react/profile" className="header__profile-link">
+        <Link to="/profile" className="header__profile-link">
           <div className="header__user-container">
             <p className="header__username">{username}</p>
             {avatar ? (
               <img
                 className="header__profile"
-                src={avatar || default_avatar}
+                src={avatar || defaultAvatar}
                 alt="User Avatar"
               />
             ) : (
@@ -68,9 +72,15 @@ function Header({
         </Link>
       </div>
 
-      {activeModal ? (
-        <MenuModal isOpen={activeModal} onClose={onClose} />
-      ) : null}
+      {isBurgerMenuOpened && (
+        <MenuModal
+          onClose={handleBurgerMenuClick}
+          username={username}
+          handleAddClick={handleAddClick}
+          avatar={avatar}
+          defaultAvatar={defaultAvatar}
+        />
+      )}
     </header>
   );
 }
