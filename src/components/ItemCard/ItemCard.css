@@ -17,6 +17,8 @@
 
 .card__image {
   width: 100%;
+  height: auto;
+  object-fit: cover;
   border-radius: 20px;
   cursor: pointer;
   padding: 0;

@@ -3,12 +3,22 @@ import "./ItemModal.css";
 import CloseBtn from "../../assets/X_close_white.svg";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
 
-function ItemModal({ activeModal, onClose, card }) {
+function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
+  const [deleteCardId, setDeleteCardId] = useState(null);
+
+  const handleDeleteConfirmationClose = () => {
+    setDeleteCardId(null);
+    setDeleteModalOpened(false);
+    setIsPreviewOpened(false);
+    onClose();
+  };
+
   const [isDeleteModalOpened, setDeleteModalOpened] = useState(false);
   const [isPreviewOpened, setIsPreviewOpened] = useState(false);
 
   const handleDeleteMenuClick = () => {
-    setDeleteModalOpened((value) => !value);
+    console.log(card);
+    setDeleteCardId(card._id);
     setDeleteModalOpened(true);
     setIsPreviewOpened(false);
   };
@@ -84,7 +94,16 @@ function ItemModal({ activeModal, onClose, card }) {
         </div>
       )}
 
-      {isDeleteModalOpened && <DeleteItemModal onClose={handleCancelDelete} />}
+      {deleteCardId && (
+        <DeleteItemModal
+          onClose={handleDeleteConfirmationClose}
+          onDeleteItem={(id) => {
+            onDeleteItem(id);
+            handleCloseAllModals();
+          }}
+          itemId={deleteCardId}
+        />
+      )}
     </div>
   );
 }

@@ -45,7 +45,10 @@ function App() {
     setActiveModal("user");
   };
 
+  console.log(activeModal);
+
   const closeActiveModal = () => {
+    console.log(123123);
     setActiveModal("");
   };
 
@@ -54,7 +57,9 @@ function App() {
   };
 
   const onAddItem = (data) => {
-    setClothingItems([data, ...clothingItems]);
+    addItem(data).then((res) => {
+      setClothingItems([res, ...clothingItems]);
+    });
     closeActiveModal();
   };
 
@@ -160,6 +165,7 @@ function App() {
             activeModal={activeModal}
             card={selectedCard}
             onClose={closeActiveModal}
+            onDeleteItem={onDeleteItem}
           ></ItemModal>
 
           <Footer />
