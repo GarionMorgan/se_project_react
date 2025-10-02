@@ -1,5 +1,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
+import "./AddItemModal.css";
 // onAddItem refers to the submit handler declared in App.jsx
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   // Call useForm and destructure its values and use in the JSX
