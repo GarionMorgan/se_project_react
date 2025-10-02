@@ -19,7 +19,6 @@ const filterWeatherData = (data) => {
   };
   result.type = getWeatherType(result.temp.F);
   result.condition = data.weather[0].main.toLowerCase();
-  console.log(result.condition);
   result.isDay = isDay(data.sys, Date.now());
   return result;
 };

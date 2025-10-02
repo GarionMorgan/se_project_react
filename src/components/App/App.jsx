@@ -26,10 +26,10 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
-  const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState("F");
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
-    setcurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   const onCardClick = (card) => {
@@ -41,26 +41,18 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const handleMenuClick = () => {
-    setActiveModal("user");
-  };
-
-  console.log(activeModal);
-
   const closeActiveModal = () => {
     console.log(123123);
     setActiveModal("");
   };
 
-  const handleDeleteBtnClick = () => {
-    setActiveModal("delete-item");
-  };
-
   const onAddItem = (data) => {
-    addItem(data).then((res) => {
-      setClothingItems([res, ...clothingItems]);
-    });
-    closeActiveModal();
+    addItem(data)
+      .then((res) => {
+        setClothingItems([res, ...clothingItems]);
+        closeActiveModal();
+      })
+      .catch((error) => console.error(error));
   };
 
   const onDeleteItem = (data) => {
@@ -73,7 +65,7 @@ function App() {
         );
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch((error) => console.error(error));
   };
 
   useEffect(() => {
@@ -109,18 +101,10 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log(data);
-        // setClothingItems([data, ...clothingItems]);
         setClothingItems(data);
       })
       .catch(console.error);
   }, []);
-
-  // useEffect(() => {
-  //   setClothingItems(defaultClothingItems);
-  // });
-
-  console.log("clothingItems:", clothingItems);
 
   return (
     <CurrentTemperatureUnitContext.Provider
