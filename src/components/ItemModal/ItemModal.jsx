@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import "./ItemModal.css";
 import CloseBtn from "../../assets/X_close_white.svg";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
+import { useModalClose } from "../../hooks/useModalClose";
 
-function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
+function ItemModal({ activeModal, onClose, card, onDeleteItem, isLoading }) {
   const [deleteCardId, setDeleteCardId] = useState(null);
 
   const handleDeleteConfirmationClose = () => {
@@ -17,15 +18,9 @@ function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
   const [isPreviewOpened, setIsPreviewOpened] = useState(false);
 
   const handleDeleteMenuClick = () => {
-    console.log(card);
     setDeleteCardId(card._id);
     setDeleteModalOpened(true);
     setIsPreviewOpened(false);
-  };
-
-  const handleCancelDelete = () => {
-    setDeleteModalOpened(false);
-    setIsPreviewOpened(true);
   };
 
   const handleCloseAllModals = () => {
@@ -41,20 +36,7 @@ function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
     }
   }, [activeModal]);
 
-  useEffect(() => {
-    const handleEscKey = (event) => {
-      if (event.key === "Escape") {
-        setIsPreviewOpened(false);
-        setDeleteModalOpened(false);
-        onClose(); // Notify parent to reset activeModal if needed
-      }
-    };
-
-    document.addEventListener("keydown", handleEscKey);
-    return () => {
-      document.removeEventListener("keydown", handleEscKey);
-    };
-  }, []);
+  useModalClose(isPreviewOpened, handleCloseAllModals);
 
   return (
     <div
@@ -102,6 +84,7 @@ function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
             handleCloseAllModals();
           }}
           itemId={deleteCardId}
+          buttonText={isLoading ? "Deleting..." : "Yes, delete item"}
         />
       )}
     </div>

@@ -27,6 +27,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -42,20 +43,24 @@ function App() {
   };
 
   const closeActiveModal = () => {
-    console.log(123123);
     setActiveModal("");
   };
 
   const onAddItem = (data) => {
+    setIsLoading(true);
     addItem(data)
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
         closeActiveModal();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const onDeleteItem = (data) => {
+    setIsLoading(true);
     deleteItem(data._id)
       .then(() => {
         setClothingItems((state) =>
@@ -65,7 +70,10 @@ function App() {
         );
         closeActiveModal();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -140,7 +148,7 @@ function App() {
           <AddItemModal
             isOpen={activeModal === "add-garment"}
             title="New garment"
-            buttonText="Add garment"
+            buttonText={isLoading ? "Saving..." : "Add garment"}
             activeModal={activeModal}
             onClose={closeActiveModal}
             onAddItem={onAddItem}
@@ -150,6 +158,7 @@ function App() {
             card={selectedCard}
             onClose={closeActiveModal}
             onDeleteItem={onDeleteItem}
+            isLoading={isLoading}
           ></ItemModal>
 
           <Footer />

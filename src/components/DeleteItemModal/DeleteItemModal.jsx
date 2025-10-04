@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./DeleteItemModal.css";
 
-const DeleteItemModal = ({ onClose, onDeleteItem, itemId }) => {
+const DeleteItemModal = ({ onClose, onDeleteItem, itemId, buttonText }) => {
   const handleDeleteCancelBtn = () => {
     onClose(); // This tells the parent to close the modal
   };
@@ -23,7 +23,7 @@ const DeleteItemModal = ({ onClose, onDeleteItem, itemId }) => {
             className="deleteItemModal__button deleteItemModal__button_type_confirm"
             onClick={handleConfirmDelete}
           >
-            Yes, delete item
+            {buttonText}
           </button>
         </div>
         <div className="deleteItemModal__cancel-btn deleteItemModal__buttons">

@@ -1,14 +1,16 @@
 import "./ModalWithForm.css";
 import CloseBtn from "../../assets/X_close.svg";
+import { useModalClose } from "../../hooks/useModalClose";
 
-function ModalWithForm({
+const ModalWithForm = ({
   children,
   buttonText,
   title,
   isOpen,
   onClose,
   onSubmit,
-}) {
+}) => {
+  useModalClose(isOpen, onClose);
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
       <div className="modal__content modal__content_type_form">
@@ -29,6 +31,6 @@ function ModalWithForm({
       </div>
     </div>
   );
-}
+};
 
 export default ModalWithForm;
