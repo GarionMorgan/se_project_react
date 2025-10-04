@@ -73,6 +73,21 @@
   background-color: #000000d6;
 }
 
+/* Disabled state styles: target both the helper class and the native :disabled state */
+.modal__submit_disabled,
+.modal__submit:disabled {
+  background-color: #cfcfcf;
+  color: #6b6b6b;
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+/* Ensure hover only applies when the button is not disabled */
+.modal__submit:not(.modal__submit_disabled):hover,
+.modal__submit:not(:disabled):hover {
+  background-color: #000000d6;
+}
+
 .modal__label {
   margin-top: 24px;
 }
@@ -93,4 +108,15 @@
 .modal__content_type_form {
   padding: 28px 28px 36px;
   max-width: 496px;
+}
+
+.modal__error {
+  color: #ff3b30;
+  font-size: 12px;
+  margin: 6px 0 0;
+}
+
+.modal__submit_disabled {
+  background-color: #888;
+  cursor: not-allowed;
 }

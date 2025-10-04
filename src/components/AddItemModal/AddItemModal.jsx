@@ -1,6 +1,7 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import validateItem from "../../scripts/validation";
 import "./AddItemModal.css";
 
 const defaultValues = {
@@ -14,14 +15,33 @@ const defaultValues = {
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   // Call useForm and destructure its values and use in the JSX
 
-  const { values, handleChange, setValues } = useForm(defaultValues);
+  const {
+    values,
+    handleChange,
+    handleBlur,
+    setValues,
+    handleReset,
+    errors,
+    touched,
+    isValid,
+  } = useForm(defaultValues, validateItem);
+
+  const [triedSubmit, setTriedSubmit] = useState(false);
 
   useEffect(() => {
-    setValues(defaultValues);
-  }, [isOpen, setValues]);
+    if (isOpen) {
+      // Reset values, errors and touched state when modal opens so old validation
+      // feedback doesn't appear before the user interacts.
+      handleReset();
+      setTriedSubmit(false);
+    }
+  }, [isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
+    setTriedSubmit(true);
+    // final check before submit
+    if (!isValid) return;
     onAddItem(values);
   }
 
@@ -32,6 +52,8 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      // Don't show the form as invalid until user interacts or tries to submit
+      isValid={Object.keys(touched).length > 0 || triedSubmit ? isValid : true}
     >
       <label htmlFor="name" className="modal__label">
         Name{" "}
@@ -40,13 +62,14 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           className="modal__input"
           id="name"
           placeholder="Name"
-          required
-          minLength="1"
-          maxLength="30"
           name="name"
           value={values.name}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
+        {errors.name && (touched.name || triedSubmit) && (
+          <p className="modal__error">{errors.name}</p>
+        )}
       </label>
       <label htmlFor="imageUrl" className="modal__label">
         Image{" "}
@@ -55,11 +78,14 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           className="modal__input"
           id="imageUrl"
           placeholder="Image Url"
-          required
           name="imageUrl"
           value={values.imageUrl}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
+        {errors.imageUrl && (touched.imageUrl || triedSubmit) && (
+          <p className="modal__error">{errors.imageUrl}</p>
+        )}
       </label>
       <fieldset className="modal__radio-btns">
         <legend className="modal__legend">Select the weather type:</legend>
@@ -99,6 +125,9 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           />{" "}
           Cold
         </label>
+        {errors.weather && (touched.weather || triedSubmit) && (
+          <p className="modal__error">{errors.weather}</p>
+        )}
       </fieldset>
     </ModalWithForm>
   );
