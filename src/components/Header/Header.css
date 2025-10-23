@@ -5,22 +5,32 @@
 }
 
 .header__add-clothes-btn {
-  position: relative;
-  top: 4px;
-  border: none;
-  font-size: 20px;
-  line-height: 24px;
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  margin: 0 auto; /* Center the button horizontally within its container */
+  position: relative; /* Ensure it stays within the flow of the layout */
+  top: 0; /* Reset any vertical offset */
+  height: 40px; /* Ensure consistent height */
+  line-height: 1.5; /* Adjust line height for alignment */
+  border: none; /* Remove the border */
+  background: none; /* Remove background styling */
   cursor: pointer;
 }
 
 .header__right-container {
   display: flex;
-  margin: 0 20px 0 auto;
-  gap: 12px;
+  align-items: center; /* Vertically center all items */
+  justify-content: center; /* Horizontally center items within the container */
+  gap: 12px; /* Add spacing between items */
+  margin-left: auto; /* Push the container to the far right */
 }
 
 .header__toggle-switch {
-  top: 5px;
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  margin: 0; /* Remove any extra margin */
 }
 
 .header__date-and-location {
@@ -46,11 +56,10 @@
 }
 .header__user-container {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  top: 4px;
-  font-size: 20px;
-  position: relative;
+  align-items: center; /* Vertically center all items */
+  justify-content: center; /* Horizontally center items */
+  gap: 12px; /* Maintain spacing between items */
+  position: relative; /* Ensure proper layout flow */
 }
 
 .header__hamburger-btn {
@@ -60,6 +69,36 @@
 .header__profile-link {
   text-decoration: none;
   color: inherit;
+}
+
+.header__sign-up {
+  cursor: pointer;
+}
+
+.header__sign-in {
+  cursor: pointer;
+}
+
+.header__avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0; /* Remove any extra margin */
+  position: relative; /* Ensure it stays within the layout flow */
+}
+
+.header__profile {
+  width: 40px; /* Set a fixed width */
+  height: 40px; /* Set a fixed height */
+  border-radius: 50%; /* Make the avatar circular */
+  object-fit: cover; /* Ensure the image scales properly */
 }
 
 @media screen and (max-width: 675px) {

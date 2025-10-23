@@ -1,6 +1,45 @@
 .SideBar {
   display: flex;
-  width: 200px;
-  gap: 16px;
-  margin-top: 6.5px;
+  flex-direction: column; /* Arrange items in a column */
+  align-items: flex-start; /* Align all items to the left */
+  justify-content: space-evenly; /* Space items evenly */
+  gap: 16px; /* Maintain spacing between items */
+  height: 100%; /* Ensure full height for even spacing */
+}
+
+.sidebar__avatar-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar__user-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; /* Align user info to the left */
+}
+
+.sidebar__edit-btn {
+  display: block;
+  margin-bottom: 8px; /* Space below the edit button */
+  margin-top: 16px; /* Add space above the edit profile button */
+  align-self: flex-start; /* Ensure button is aligned to the left */
+}
+
+.sidebar__logout-btn {
+  display: block;
+  align-self: flex-start; /* Ensure button is aligned to the left */
 }

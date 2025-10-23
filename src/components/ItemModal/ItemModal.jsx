@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ItemModal.css";
 import CloseBtn from "../../assets/X_close_white.svg";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
@@ -16,6 +17,9 @@ function ItemModal({ activeModal, onClose, card, onDeleteItem, isLoading }) {
 
   const [isDeleteModalOpened, setDeleteModalOpened] = useState(false);
   const [isPreviewOpened, setIsPreviewOpened] = useState(false);
+
+  const currentUser = useContext(CurrentUserContext);
+  const isOwner = card && currentUser && card.owner === currentUser._id;
 
   const handleDeleteMenuClick = () => {
     setDeleteCardId(card._id);
@@ -64,14 +68,16 @@ function ItemModal({ activeModal, onClose, card, onDeleteItem, isLoading }) {
               <p className="modal__weather">Weather: {card.weather}</p>
             </div>
 
-            <div className="modal__delete-btn">
-              <button
-                className="modal__delete-btn"
-                onClick={handleDeleteMenuClick}
-              >
-                Delete item
-              </button>
-            </div>
+            {isOwner && (
+              <div className="modal__delete-btn">
+                <button
+                  className="modal__delete-btn"
+                  onClick={handleDeleteMenuClick}
+                >
+                  Delete item
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

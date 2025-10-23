@@ -6,11 +6,16 @@
   overflow: hidden;
   border-radius: 20px;
   position: relative;
-  top: 8px;
+  margin: 0 auto; /* Center horizontally */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  box-sizing: border-box; /* Include border in the element's dimensions */
 }
 
 .toggle-switch:hover {
-  border: 2px solid #000;
+  border-width: 2px; /* Thicker border on hover */
+  box-sizing: border-box; /* Ensure dimensions remain consistent */
 }
 
 .toggle-switch__checkbox {
@@ -36,15 +41,17 @@
 .toggle-switch__text {
   position: absolute;
   color: #808080;
-  top: 5px;
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust for perfect vertical centering */
+  transition: color 0.3s; /* Smooth color transition */
 }
 
 .toggle-switch__text_F {
-  left: 9px;
+  left: 9px; /* Fixed position for "F" */
 }
 
 .toggle-switch__text_C {
-  right: 9px;
+  right: 9px; /* Fixed position for "C" */
 }
 
 .toggle-switch__checkbox:checked ~ .toggle-switch__circle {
@@ -53,5 +60,4 @@
 
 .toggle-switch__text_color_white {
   color: #fff;
-  transition: all 1s;
 }

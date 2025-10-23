@@ -1,8 +1,19 @@
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ClothesSection.css";
-import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 
-function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
+function ClothesSection({
+  onCardClick,
+  clothingItems,
+  handleAddClick,
+  onCardLike,
+  isLoggedIn,
+  currentUser,
+}) {
+  const userItems = clothingItems.filter(
+    (item) => item.owner === currentUser._id
+  );
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">
@@ -14,13 +25,27 @@ function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
           + Add New
         </button>
       </div>
-      <ul className="clothes-section__items">
-        {clothingItems.map((item) => {
-          return (
-            <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
-          );
-        })}
-      </ul>
+      {userItems.length > 0 ? (
+        <ul className="clothes-section__items">
+          {userItems.map((item) => {
+            return (
+              <ItemCard
+                key={item._id}
+                item={item}
+                onCardClick={onCardClick}
+                onCardLike={onCardLike}
+                isLoggedIn={isLoggedIn}
+                currentUser={currentUser}
+              />
+            );
+          })}
+        </ul>
+      ) : (
+        <p className="clothes-section__no-items">
+          You haven't added any items yet. Click "Add New" to add your first
+          item!
+        </p>
+      )}
     </div>
   );
 }
