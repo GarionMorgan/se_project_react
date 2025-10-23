@@ -10,6 +10,7 @@ export default function ToggleSwitch() {
   return (
     <label htmlFor="toggle-switch__checkbox" className="toggle-switch">
       <input
+        id="toggle-switch__checkbox"
         onChange={handleToggleSwitchChange}
         type="checkbox"
         className="toggle-switch__checkbox"

@@ -1,13 +1,11 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-import avatar from "../../assets/avatar.svg";
 import defaultAvatar from "../../assets/defaultAvatar.svg";
 import burgerMenu from "../../assets/hamburger_btn.svg";
 import MenuModal from "../MenuModal/MenuModal";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Header({
   handleAddClick,

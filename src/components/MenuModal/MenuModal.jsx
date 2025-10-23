@@ -28,9 +28,9 @@ const MenuModal = ({
               alt="User Avatar"
             />
           ) : (
-            <span.header__avatar.header__avatar_none>
+            <span className="header__avatar header__avatar_none">
               {username.charAt(0).toUpperCase() || ""}
-            </span.header__avatar.header__avatar_none>
+            </span>
           )}{" "}
         </div>
         <button

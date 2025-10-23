@@ -14,11 +14,20 @@ function Profile({
   isLoggedIn, // Added isLoggedIn to props
   currentUser,
 }) {
-  const username = currentUser.name;
+  if (!currentUser) {
+    return (
+      <div className="profile">
+        <p>Please log in to view your profile.</p>
+      </div>
+    );
+  }
+  const username = currentUser?.name ?? "User";
 
-  const userItems = clothingItems.filter(
-    (item) => item.owner === currentUser._id
-  );
+  const userId = currentUser?._id || null;
+
+  const userItems = userId
+    ? clothingItems.filter((item) => item.owner === userId)
+    : [];
 
   return (
     <div className="profile">

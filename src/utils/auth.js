@@ -1,14 +1,7 @@
 import { getAuthHeaders } from "./api";
+import { checkResponse } from "./api";
 
 const baseUrl = "http://localhost:3001"; // Your backend URL
-
-// Helper function to check response
-export const checkResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
-};
 
 // Register new user
 export const register = ({ name, avatar, email, password }) => {
