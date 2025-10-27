@@ -34,6 +34,10 @@ function Header({
           <img className="header__logo" src={logo} alt="What To Wear Logo" />
         </Link>
 
+        <p className="header__date-and-location">
+          {currentDate}, {weatherData.city || "your location"}
+        </p>
+
         <button
           className="header__hamburger-btn"
           onClick={handleBurgerMenuClick}
@@ -47,9 +51,6 @@ function Header({
         </button>
       </div>
 
-      <p className="header__date-and-location">
-        {currentDate}, {weatherData.city || "your location"}
-      </p>
       <div className="header__right-container">
         <ToggleSwitch className="header__toggle-switch" />
         <button

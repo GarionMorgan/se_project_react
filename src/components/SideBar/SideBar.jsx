@@ -18,19 +18,25 @@ function SideBar({ onEditProfile, onLogOut }) {
               {username.charAt(0).toUpperCase()}
             </div>
           )}
-          <p className="sidebar__username">{username}</p>
+          <h2 className="sidebar__name">{username}</h2>
+        </div>
+        <div className="sidebar__actions">
+          <button
+            className="sidebar__edit-btn"
+            type="button"
+            onClick={onEditProfile}
+          >
+            Change Profile data
+          </button>
         </div>
         <button
-          className="sidebar__edit-btn"
+          className="sidebar__logout-btn"
           type="button"
-          onClick={onEditProfile}
+          onClick={onLogOut}
         >
-          Edit Profile
+          Log Out
         </button>
       </div>
-      <button className="sidebar__logout-btn" type="button" onClick={onLogOut}>
-        Log Out
-      </button>
     </div>
   );
 }

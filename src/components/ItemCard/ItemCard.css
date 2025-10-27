@@ -1,48 +1,55 @@
 .card {
   width: 323px;
+  height: 323px;
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .card__name {
   margin: 0;
-  position: absolute;
-  top: 15px;
-  background-color: #fff;
-  padding: 2px 12px;
-  border-radius: 4px;
-  font-size: 16px;
+  padding: 4px 8px;
+  background-color: white;
+  border-radius: 12px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .card__image {
   display: block; /* Ensure the image is a block element */
   width: 100%; /* Make the image responsive */
-  height: auto; /* Maintain aspect ratio */
+  height: 100%; /* Maintain aspect ratio */
   object-fit: cover; /* Ensure the image covers the container */
   border-radius: 20px;
   cursor: pointer;
   padding: 0;
+  position: relative; /* Ensure the header is positioned relative to the image */
+  aspect-ratio: 1 /1;
 }
 
 .card__header {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  gap: 15px; /* 👈 This sets the space between name and button */
+  z-index: 10;
 }
 
 .card__like-button {
   width: 24px;
   height: 24px;
-  position: absolute;
-  top: 14px;
-  right: 100px;
   background: none;
   border: none;
-  color: transparent;
   cursor: pointer;
-  stroke: black;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .card__like-button img {

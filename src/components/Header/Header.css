@@ -73,10 +73,16 @@
 
 .header__sign-up {
   cursor: pointer;
+  border: none; /* Remove the box around the buttons */
+  font-weight: bold; /* Make the font weight thicker */
+  background: none; /* Ensure no background styling */
 }
 
 .header__sign-in {
   cursor: pointer;
+  border: none; /* Remove the box around the buttons */
+  font-weight: bold; /* Make the font weight thicker */
+  background: none; /* Ensure no background styling */
 }
 
 .header__avatar-placeholder {
@@ -108,9 +114,9 @@
 
   .header__main {
     display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: row; /* Ensure items are aligned horizontally */
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Distribute items evenly */
   }
 
   .header__hamburger-btn {
@@ -123,12 +129,13 @@
   .header__date-and-location {
     margin: auto;
     margin-left: 0;
-    margin-top: 32px;
+    margin-right: 10px;
   }
 
   .header__logo {
     width: 89px;
     height: 40px;
+    margin: 0;
   }
 
   .header__add-clothes-btn {
@@ -141,6 +148,12 @@
     display: none;
   }
   .header__toggle-switch {
+    display: none;
+  }
+  .header__profile {
+    display: none;
+  }
+  .header__right-container {
     display: none;
   }
 }

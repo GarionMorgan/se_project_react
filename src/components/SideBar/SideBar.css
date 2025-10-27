@@ -1,27 +1,28 @@
 .SideBar {
   display: flex;
-  flex-direction: column; /* Arrange items in a column */
-  align-items: flex-start; /* Align all items to the left */
-  justify-content: space-evenly; /* Space items evenly */
-  gap: 16px; /* Maintain spacing between items */
-  height: 100%; /* Ensure full height for even spacing */
+  flex-direction: column;
+  align-items: flex-start; /* Align all content to the left */
+  gap: 24px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  height: 100vh;
+  width: 300px; /* Increase the width of the sidebar */
 }
 
 .sidebar__avatar-placeholder {
-  width: 56px;
-  height: 56px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background-color: #ccc;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .sidebar__avatar {
-  width: 56px;
-  height: 56px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -29,7 +30,9 @@
 .sidebar__user-info {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start; /* Align user info to the left */
+  align-items: center;
+  gap: 12px;
+  text-align: left;
 }
 
 .sidebar__edit-btn {
@@ -42,4 +45,36 @@
 .sidebar__logout-btn {
   display: block;
   align-self: flex-start; /* Ensure button is aligned to the left */
+}
+
+.sidebar__name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+}
+
+.sidebar__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.sidebar__edit-btn,
+.sidebar__logout-btn {
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.sidebar__edit-btn:hover,
+.sidebar__logout-btn:hover {
+  color: #007bff;
 }

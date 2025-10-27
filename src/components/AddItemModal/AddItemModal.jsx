@@ -19,7 +19,6 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     values,
     handleChange,
     handleBlur,
-    setValues,
     handleReset,
     errors,
     touched,
