@@ -8,7 +8,6 @@ import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
-import { defaultClothingItems } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
@@ -42,9 +41,11 @@ function App() {
 
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isLoading, setIsLoading] = useState(false);
+  // state for current user
+  const [currentUser, setCurrentUser] = useState(null);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -62,15 +63,14 @@ function App() {
       .then((data) => {
         localStorage.setItem("jwt", data.token);
         setIsLoggedIn(true);
-        setIsRegisterModalOpen(false);
-        setActiveModal(""); // Close the modal after successful signup
+        closeActiveModal(); // Close the modal after successful signup
         return getUserInfo(data.token); // Fetch user info after signup
       })
       .then((user) => {
         setCurrentUser(user); // Update current user state
       })
-      .catch(() => {
-        console.log("Registration/Login failed");
+      .catch((error) => {
+        console.log("Registration/Login failed", error);
       });
   };
 
@@ -79,19 +79,16 @@ function App() {
       .then((res) => {
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
-        setActiveModal("");
+        closeActiveModal(); // Close the modal after successful login
         return getUserInfo(res.token); // Fetch user info after login
       })
       .then((user) => {
         setCurrentUser(user); // Update current user state
       })
-      .catch(() => {
-        console.log("Login failed");
+      .catch((error) => {
+        console.log("Login failed", error);
       });
   };
-
-  // state for current user
-  const [currentUser, setCurrentUser] = useState(null);
 
   // check token on app load
 
@@ -103,8 +100,8 @@ function App() {
           setIsLoggedIn(true);
           setCurrentUser(user);
         })
-        .catch(() => {
-          console.error("Token is invalid");
+        .catch((error) => {
+          console.error("Token is invalid", error);
           setIsLoggedIn(false);
           setCurrentUser(null);
         });
@@ -146,7 +143,12 @@ function App() {
         setClothingItems([res, ...clothingItems]);
         closeActiveModal();
       })
-      .catch((error) => console.error(error))
+      .catch((err) => {
+        console.error(
+          "Unable to save new clothing item to your wardrobe. Please verify your internet connection and try again.",
+          err
+        );
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -164,7 +166,12 @@ function App() {
         );
         closeActiveModal();
       })
-      .catch((error) => console.error(error))
+      .catch((err) => {
+        console.error(
+          "Unable to delete clothing item from your wardrobe. Please try again.",
+          err
+        );
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -178,7 +185,7 @@ function App() {
         setCurrentUser(updatedUser);
         closeActiveModal();
       })
-      .catch(() => console.error("Profile update failed"))
+      .catch((error) => console.error("Profile update failed", error))
       .finally(() => {
         setIsLoading(false);
       });
@@ -214,7 +221,12 @@ function App() {
           const filteredData = filterWeatherData(data);
           setWeatherData(filteredData);
         })
-        .catch(console.error);
+        .catch((error) => {
+          console.error(
+            "Failed to fetch weather data. Please check your internet connection and try again.",
+            error
+          );
+        });
     };
 
     if (navigator && navigator.geolocation) {

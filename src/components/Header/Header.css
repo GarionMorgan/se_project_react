@@ -64,6 +64,7 @@
 
 .header__hamburger-btn {
   display: none;
+  margin-left: auto; /* Push the hamburger menu to the far right */
 }
 
 .header__profile-link {
@@ -107,6 +108,12 @@
   object-fit: cover; /* Ensure the image scales properly */
 }
 
+.header__main {
+  display: flex;
+  justify-content: space-between; /* Ensure items are spaced apart */
+  align-items: center; /* Vertically center items */
+}
+
 @media screen and (max-width: 675px) {
   .header {
     flex-direction: column;
@@ -124,6 +131,8 @@
     position: relative;
     border: none;
     background-color: transparent;
+    left: 17px;
+    top: 3px;
   }
 
   .header__date-and-location {

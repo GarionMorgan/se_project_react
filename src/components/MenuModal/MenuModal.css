@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  z-index: 1000; /* Ensure the modal is above other elements */
 }
 
 .modal_opened {
@@ -34,4 +35,12 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+}
+
+@media screen and (max-width: 675px) {
+  .menuModal__content {
+    width: 90%; /* Ensure consistent size for smaller screens */
+    height: auto; /* Adjust height dynamically */
+    max-height: 90%; /* Prevent overflow */
+  }
 }

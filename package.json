@@ -3,14 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://garionmorgan.github.io/se_project_react/",
+  "homepage": "https://knowtwrtoday.jumpingcrab.com",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "npm run build && scp -r dist/* garmorgan14@knowtwrtoday.jumpingcrab.com:/var/www/html",
     "clean": "rm -rf node_modules/.vite"
   },
   "dependencies": {

@@ -1,7 +1,10 @@
 import { getAuthHeaders } from "./api";
 import { checkResponse } from "./api";
 
-const baseUrl = "http://localhost:3001"; // Your backend URL
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.knowtwrtoday.jumpingcrab.com"
+    : "http://localhost:3001";
 
 // Register new user
 export const register = ({ name, avatar, email, password }) => {

@@ -53,13 +53,15 @@ function Header({
 
       <div className="header__right-container">
         <ToggleSwitch className="header__toggle-switch" />
-        <button
-          className="header__add-clothes-btn"
-          type="button"
-          onClick={handleAddClick}
-        >
-          + Add clothes
-        </button>
+        {currentUser && (
+          <button
+            className="header__add-clothes-btn"
+            type="button"
+            onClick={handleAddClick}
+          >
+            + Add clothes
+          </button>
+        )}
         {currentUser ? (
           <Link to="/profile" className="header__profile-link">
             <div className="header__user-container">
