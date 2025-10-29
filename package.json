@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "npm run build && scp -r dist/* garmorgan14@knowtwrtoday.jumpingcrab.com:/var/www/html",
+    "deploy": "npm run build && scp -r dist/* garmorgan14@knowtwrtoday.jumpingcrab.com:/home/garmorgan14/frontend",
     "clean": "rm -rf node_modules/.vite"
   },
   "dependencies": {

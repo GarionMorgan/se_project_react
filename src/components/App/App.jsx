@@ -70,7 +70,7 @@ function App() {
         setCurrentUser(user); // Update current user state
       })
       .catch((error) => {
-        console.log("Registration/Login failed", error);
+        console.error("Registration/Login failed", error);
       });
   };
 
@@ -86,7 +86,7 @@ function App() {
         setCurrentUser(user); // Update current user state
       })
       .catch((error) => {
-        console.log("Login failed", error);
+        console.error("Login failed", error);
       });
   };
 
@@ -118,7 +118,6 @@ function App() {
   };
 
   const handleSignUpClick = () => {
-    console.log("Sign up");
     setActiveModal("sign-up");
   };
 
@@ -127,7 +126,6 @@ function App() {
   };
 
   const handleSignInClick = () => {
-    console.log("Sign in");
     setActiveModal("sign-in");
   };
 
