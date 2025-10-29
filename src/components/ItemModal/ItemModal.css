@@ -1,6 +1,8 @@
 .modal__content_type_image {
-  max-width: 498px;
-  max-height: 610px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal__image {
