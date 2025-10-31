@@ -37,6 +37,20 @@
   gap: 20px;
 }
 
+.menuModal__sign-in,
+.menuModal__sign-up {
+  width: 100%;
+  max-width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #000;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 675px) {
   .menuModal__content {
     width: 90%; /* Ensure consistent size for smaller screens */

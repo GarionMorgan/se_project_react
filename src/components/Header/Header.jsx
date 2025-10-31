@@ -106,6 +106,9 @@ function Header({
           handleAddClick={handleAddClick}
           avatar={currentUser?.avatar}
           defaultAvatar={defaultAvatar}
+          currentUser={currentUser}
+          handleSignUpClick={handleSignUpClick}
+          handleSignInClick={handleSignInClick}
         />
       )}
     </header>

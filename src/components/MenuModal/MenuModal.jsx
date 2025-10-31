@@ -9,8 +9,21 @@ const MenuModal = ({
   handleAddClick,
   avatar,
   defaultAvatar,
+  currentUser,
+  handleSignUpClick,
+  handleSignInClick,
 }) => {
   const modalRef = useRef(null);
+
+  const handleSignIn = () => {
+    handleSignInClick();
+    onClose();
+  };
+
+  const handleSignUp = () => {
+    handleSignUpClick();
+    onClose();
+  };
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -63,14 +76,35 @@ const MenuModal = ({
               </span>
             )}{" "}
           </div>
-          <button
-            type="button"
-            className="menuModal__add-clothes"
-            onClick={handleAddClick}
-          >
-            + Add clothes
-          </button>
-          <ToggleSwitch />
+          {currentUser ? (
+            <>
+              <button
+                type="button"
+                className="menuModal__add-clothes"
+                onClick={handleAddClick}
+              >
+                + Add clothes
+              </button>
+              <ToggleSwitch />
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                className="menuModal__sign-up"
+                onClick={handleSignUp}
+              >
+                Sign Up
+              </button>
+              <button
+                type="button"
+                className="menuModal__sign-in"
+                onClick={handleSignIn}
+              >
+                Sign In
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>
