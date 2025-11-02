@@ -16,11 +16,14 @@ const getItems = () => {
   return fetch(`${baseUrl}/items`).then(checkResponse);
 };
 
+const sanitizeItem = ({ _id, ...rest }) => rest;
+
 const addItem = (item, token) => {
+  const { _id, ...cleanItem } = item; // remove _id before sending to server
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: getAuthHeaders(token),
-    body: JSON.stringify(item),
+    body: JSON.stringify(cleanItem),
   }).then(checkResponse);
 };
 
