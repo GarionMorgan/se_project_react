@@ -136,7 +136,10 @@ function App() {
   const onAddItem = (data) => {
     setIsLoading(true);
     const token = localStorage.getItem("jwt");
-    addItem(data, token)
+
+    // strip out _id from data before sending to server
+    const { _id, ...cleanData } = data;
+    addItem(cleanData, token)
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
         closeActiveModal();
