@@ -137,8 +137,10 @@ function App() {
     setIsLoading(true);
     const token = localStorage.getItem("jwt");
 
-    // strip out _id from data before sending to server
-    const { _id, ...cleanData } = data;
+    // create shallow copy and remove _id
+    const cleanData = { ...data };
+    delete cleanData._id;
+
     addItem(cleanData, token)
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
