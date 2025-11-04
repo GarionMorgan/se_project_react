@@ -136,13 +136,9 @@ function App() {
   const onAddItem = (data) => {
     setIsLoading(true);
     const token = localStorage.getItem("jwt");
-    console.log("Before - Data received for new item:", data);
-    console.log("on add item called");
     // create shallow copy and remove _id
     const cleanData = { ...data };
     delete cleanData._id;
-
-    console.log("Clean data being sent to addItem:", cleanData);
 
     addItem(cleanData, token)
       .then((res) => {

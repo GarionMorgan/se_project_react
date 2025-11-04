@@ -17,9 +17,7 @@ const getItems = () => {
 };
 
 const addItem = (item, token) => {
-  console.log("Original data received:", item);
   const { _id, ...cleanData } = item;
-  console.log("Clean data being sent:", cleanData);
 
   return fetch(`${baseUrl}/items`, {
     method: "POST",
